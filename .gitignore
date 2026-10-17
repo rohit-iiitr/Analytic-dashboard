@@ -41,5 +41,8 @@ Thumbs.db
 *.swp
 *.swo
 
-APPROACH.md 
-README.md 
+# Project docs to ignore
+APPROACH.md
+approach.md
+AGENTS.md
+**/AGENTS.md
