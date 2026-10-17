@@ -11,7 +11,15 @@ export const createApp = () => {
   const app = express();
 
   app.disable("x-powered-by");
-  app.use(cors({ origin: env.clientOrigin, exposedHeaders: ["X-Cache", "Retry-After"] }));
+  app.use(
+    cors({
+      origin: "*",
+      methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+      allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Accept"],
+      exposedHeaders: ["X-Cache", "Retry-After"],
+      optionsSuccessStatus: 204,
+    })
+  );
   app.use(express.json({ limit: "10kb" }));
 
   app.get("/api/health", (_req, res) => {
